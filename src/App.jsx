@@ -13,6 +13,7 @@ export default function App() {
     amount: " ",
     date: " ",
   });
+  const [selectedCategory, setSelectedCatagory] = useState("");
   const handelFormChange = (evt) => {
     const name = evt.target.name;
     const value = evt.target.value;
@@ -83,7 +84,12 @@ export default function App() {
               totalExpense={totalExpense}
             />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8">
-              <BalaanceSummary />
+              <BalaanceSummary
+                selectedCategory={selectedCategory}
+                onSelection={setSelectedCatagory}
+                categories={categories}
+                transactionType={transactionType}
+              />
             </div>
           </div>
         </section>

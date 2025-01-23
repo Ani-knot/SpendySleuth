@@ -1,4 +1,4 @@
-export default function Income() {
+export default function Income({ selectedCategory, onSelection, categories }) {
   return (
     <div className="border rounded-md">
       {/* Header */}
