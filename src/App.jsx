@@ -55,6 +55,17 @@ export default function App() {
           "Transport",
           "Telephone",
         ];
+  const incomeCategories = ["Salary", "Outsourcing", "Bond", "Dividend"];
+  const expenseCategories = [
+    "Education",
+    "Food",
+    "Health",
+    "Bill",
+    "Insurance",
+    "Tax",
+    "Transport",
+    "Telephone",
+  ];
   const totalIncome = transactions
     .filter((t) => t.type === "Income")
     .reduce((sum, t) => sum + parseFloat(t.amount), 0);
@@ -87,8 +98,8 @@ export default function App() {
               <BalaanceSummary
                 selectedCategory={selectedCategory}
                 onSelection={setSelectedCatagory}
-                categories={categories}
-                transactionType={transactionType}
+                incomeCategories={incomeCategories}
+                expenseCategories={expenseCategories}
               />
             </div>
           </div>
