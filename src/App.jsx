@@ -13,7 +13,7 @@ export default function App() {
     amount: " ",
     date: " ",
   });
-  const [selectedCategory, setSelectedCatagory] = useState("");
+  // const [selectedCategory, setSelectedCatagory] = useState("");
   const handelFormChange = (evt) => {
     const name = evt.target.name;
     const value = evt.target.value;
@@ -42,6 +42,13 @@ export default function App() {
     setTransactionType(type);
     setFormData({ ...formData, type: type });
   };
+  const handleEditTransaction = (transaction) => {
+    setFormData(transaction);
+    setTransactionType(transaction.type);
+  };
+  const handleDeleteTransaction = (transaction) => {
+    setTransactions(transactions.filter((t) => t !== transaction));
+  };
   const categories =
     transactionType === "Income"
       ? ["Salary", "Outsourcing", "Bond", "Dividend"]
@@ -55,17 +62,17 @@ export default function App() {
           "Transport",
           "Telephone",
         ];
-  const incomeCategories = ["Salary", "Outsourcing", "Bond", "Dividend"];
-  const expenseCategories = [
-    "Education",
-    "Food",
-    "Health",
-    "Bill",
-    "Insurance",
-    "Tax",
-    "Transport",
-    "Telephone",
-  ];
+  // const incomeCategories = ["Salary", "Outsourcing", "Bond", "Dividend"];
+  // const expenseCategories = [
+  //   "Education",
+  //   "Food",
+  //   "Health",
+  //   "Bill",
+  //   "Insurance",
+  //   "Tax",
+  //   "Transport",
+  //   "Telephone",
+  // ];
   const totalIncome = transactions
     .filter((t) => t.type === "Income")
     .reduce((sum, t) => sum + parseFloat(t.amount), 0);
@@ -96,10 +103,11 @@ export default function App() {
             />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8">
               <BalaanceSummary
-                selectedCategory={selectedCategory}
-                onSelection={setSelectedCatagory}
-                incomeCategories={incomeCategories}
-                expenseCategories={expenseCategories}
+                // selectedCategory={selectedCategory}
+                // onSelection={setSelectedCatagory}
+                // incomeCategories={incomeCategories}
+                // expenseCategories={expenseCategories}
+                transactions={transactions}
               />
             </div>
           </div>
